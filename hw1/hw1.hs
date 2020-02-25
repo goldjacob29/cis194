@@ -1,6 +1,5 @@
 module Hw1 where
 
-
 -- ex 1
 toDigits :: Integer -> [Integer]
 toDigits x 
@@ -14,15 +13,25 @@ toDigitsRev x
 
 -- ex 2
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = undefined
+doubleEveryOther xs = 
+    let
+        double _ [] = []
+        double True  (x:xs) = (x*2) : double False xs
+        double False (x:xs) =     x : double True xs
+    in
+        reverse $ double False $ reverse xs
 
 -- ex 3
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits [] = 0
+sumDigits (x:xs) 
+  | x < 10 = x + sumDigits xs
+  | otherwise = sumDigits $ toDigits x ++ xs
 
 -- ex 4
 validate :: Integer -> Bool
-validate = undefined
+validate = (verify . sumDigits . doubleEveryOther . toDigits)
+    where verify x = (x `mod` 10) == 0
 
 -- ex 5
 type Peg = String
