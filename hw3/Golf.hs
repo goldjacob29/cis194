@@ -27,6 +27,7 @@ localMaxima (a:b:c:xs) =
     else localMaxima (b:c:xs)
 localMaxima _ = []
 
+
 -- ex 3
 getFrequency :: Integer -> [Integer] -> Int
 getFrequency x = length . filter (==x)
