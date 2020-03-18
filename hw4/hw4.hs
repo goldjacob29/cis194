@@ -1,4 +1,4 @@
-module HW4 where
+module Hw4 where
 
 -- ex 1
 
@@ -30,6 +30,10 @@ data Tree a = Leaf
 foldTree :: [a] -> Tree a
 foldTree = undefined
 
+insert :: a -> Tree a -> Tree a
+insert x Leaf = Node 1 Leaf x Leaf
+insert x _ = undefined
+
 
 xor :: [Bool] -> Bool
-xor = foldr (/=) False
+xor = foldr (\acc x -> x /= acc) False
